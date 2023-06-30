@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>iapp资源-输入密码</title>
+  <style>
+    body {
+      background-color: #2196f3; /* 设置背景颜色为主题色 */
+    }
+    
+    input[type="password"],
+    button {
+      border-radius: 5px; /* 添加圆角 */
+      background-color: #2196f3; /* 应用主题色 */
+      color: #ffffff; /* 设置文本颜色为白色 */
+      padding: 10px; /* 添加内边距 */
+      font-size: 16px; /* 设置字体大小 */
+      border: 2px solid #ffffff; /* 设置边框颜色为白色 */
+    }
+    
+    button {
+      cursor: pointer; /* 设置鼠标样式为手型 */
+    }
+    
+    h1 {
+      color: #ffffff; /* 设置标题文本颜色为白色 */
+    }
+  </style>
+  <script>
+    function checkPassword() {
+      var password = document.getElementById("password").value;
+      
+      // 将密码隐藏在源代码中
+      var encryptedPassword = "zbwyyds123456";
+      
+      if (password === encryptedPassword) {
+        window.location.href = "home.html"; // 密码正确，跳转到指定页面
+      } else {
+        alert("密码错误，请重新输入"); // 密码错误，弹出提示
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1>iapp资源-输入密码</h1>
+  <input type="password" id="password">
+  <button onclick="checkPassword()">确认</button>
+</body>
+
+</html>
