@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* 设置整个页面的样式 */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    
+    /* 设置分类选择区域的样式 */
+    .category-selector {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      flex-wrap: wrap;
+    }
+    
+    /* 设置每个色块的样式 */
+    .category {
+      flex: 0 0 200px;
+      height: 200px;
+      margin: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      color: #ffffff;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    /* 设置主题色块的背景颜色 */
+    .category.theme {
+      background-color: #2196f3;
+    }
+    
+    .category.red {
+      background-color: #2196f3;
+    }
+    
+    .category.green {
+      background-color: #2196f3;
+    }
+    
+    .category.blue {
+      background-color: #2196f3;
+    }
+    
+    .category.yellow {
+      background-color: #2196f3;
+    }
+    
+    .category.orange {
+      background-color: #2196f3;
+    }
+    
+    .category.purple {
+      background-color: #2196f3;
+    }
+    
+    .category.cyan {
+      background-color: #2196f3;
+    }
+    
+    /* 设置返回按钮的样式 */
+    .custom-back-button {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      background-color: #2196f3;
+      color: #ffffff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    
+    /* 设置按钮容器的样式 */
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    
+    /* 调整按钮间距 */
+    .button-container .category {
+      margin: 5px;
+    }
+
+    /* 媒体查询：当屏幕尺寸小于768px时，将按钮容器改为纵向排列 */
+    @media(max-width: 768px) {
+      .button-container {
+        flex-direction: column;
+      }
+    }
+    .custom-back-button {
+  margin-bottom: 20px; /* 调整按钮与下方元素之间的垂直间距 */
+}
+
+  </style>
+</head>
+  <body>
+    <button class="custom-back-button" onclick="window.location.href = 'index.html'">返回</button>
+    <div class="button-container">
+      <div class="category theme" onclick="openPage('https://wwu.lanzoub.com/b04e56uje')">生活便利</div>
+      <div class="category red" onclick="openPage('https://wwu.lanzoub.com/b04e56ukf')">娱乐游戏</div>
+      <div class="category green" onclick="openPage('https://wwu.lanzoub.com/b04e56uni')">实用工具</div>
+      <div class="category blue" onclick="openPage('https://wwu.lanzoub.com/b04duhmjg')">酷盒子专区</div>
+    </div>
+  </body>
+  
+  <script>
+    // 返回按钮点击事件
+    document.querySelector('.back-button').addEventListener('click', function() {
+      window.history.back();
+    });
+    
+    // 色块点击事件
+    function openPage(url) {
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>

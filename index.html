@@ -1,52 +1,69 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-  <meta charset="UTF-8">
-  <title>iapp资源-输入密码</title>
+  <title>小天才资源库</title>
   <style>
-    body {
-      background-color: #2196f3; /* 设置背景颜色为主题色 */
+    :root {
+      --primary-color: #2196f3;
     }
-    
-    input[type="password"],
-    button {
-      border-radius: 5px; /* 添加圆角 */
-      background-color: #2196f3; /* 应用主题色 */
-      color: #ffffff; /* 设置文本颜色为白色 */
-      padding: 10px; /* 添加内边距 */
-      font-size: 16px; /* 设置字体大小 */
-      border: 2px solid #ffffff; /* 设置边框颜色为白色 */
+
+    .resource {
+      background-color: var(--primary-color);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
     }
-    
-    button {
-      cursor: pointer; /* 设置鼠标样式为手型 */
+
+    .icon {
+      margin-right: 10px;
     }
-    
-    h1 {
-      color: #ffffff; /* 设置标题文本颜色为白色 */
+
+    .download-button {
+      background-color: white;
+      color: var(--primary-color);
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
     }
+
+    .download-button:hover {
+      background-color: #e3f2fd;
+    }
+    float:lift{
+  float: lift;
+}
   </style>
-  <script>
-    function checkPassword() {
-      var password = document.getElementById("password").value;
-      
-      // 将密码隐藏在源代码中
-      var encryptedPassword = "zbwyyds123456";
-      
-      if (password === encryptedPassword) {
-        window.location.href = "home.html"; // 密码正确，跳转到指定页面
-      } else {
-        alert("密码错误，请重新输入"); // 密码错误，弹出提示
-      }
-    }
-  </script>
 </head>
-
 <body>
-  <h1>iapp资源-输入密码</h1>
-  <input type="password" id="password">
-  <button onclick="checkPassword()">确认</button>
+    <h1 style="color: black;">小天才资源库</h1>
+    <div style="background-color: #ccc; padding: 10px;">
+      <marquee behavior="scroll" direction="left">
+        欢迎访问我们的资源网站！本站下载密码统一为0000（特别标注除外），联系开发者？QQ 3093711629
+      </marquee>
+    </div>
+     <h4>没有找到想要的资源？<a href="QQ group.html">点我查看更多</a></h4>
+  <div class="resource">
+    <img src="https://static.codemao.cn/coco/player/unstable/rJINeccdh.image/png?hash=FncbRa0XYmDMoWR5ID0jTr5rSIG4" alt="图标" class="icon" style="width: 100px;">
+    <h3 style="color: white;">[荐]酷腕市场 应用在我手中~</h3>
+    <a href="https://wwu.lanzoub.com/icuRB110kxta" class="download-button" style="margin-left: auto;">下载</a>
+  </div>
+  <div class="resource" style="display: flex;">
+    <img src="https://static.codemao.cn/coco/player/unstable/rJINeccdh.image/png?hash=FncbRa0XYmDMoWR5ID0jTr5rSIG4" alt="图标" class="icon" style="width: 100px;">
+    <h3 style="color: white;">超级恢复软件</h3>
+    <a href="https://pan.baidu.com/s/1ybKNDDeR66nusjFhu_zqXw?pwd=0000" class="download-button" style="margin-left: auto;">下载</a>
+</div>
+  <div class="resource">
+    <img src="https://static.codemao.cn/coco/player/unstable/rJINeccdh.image/png?hash=FncbRa0XYmDMoWR5ID0jTr5rSIG4" alt="图标" class="icon" style="width: 100px;">
+    <h3 style="color: white;">电脑·破解软件</h3>
+    <a href="https://wwu.lanzoub.com/b04e5vp1g" class="download-button" style="margin-left: auto;">下载</a>
+  </div>
+  <div class="resource">
+    <img src="https://static.codemao.cn/coco/player/unstable/rJINeccdh.image/png?hash=FncbRa0XYmDMoWR5ID0jTr5rSIG4" alt="图标" class="icon" style="width: 100px;">
+    <h3 style="color: white;">手表软件</h3>
+    <a href="watchapp.html" class="download-button" style="margin-left: auto;">前往</a>
+  </div>
+  </div>
 </body>
-
 </html>
