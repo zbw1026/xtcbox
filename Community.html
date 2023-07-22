@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>社区网站</title>
+  <style>
+    .post {
+      width: 80%;
+      height: 120px;
+      border: 2px solid #2196f3;
+      border-radius: 10px;
+      margin: 20px;
+      padding: 10px;
+      cursor: pointer;
+      position: relative;
+    }
+    
+    .like-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: #2196f3;
+      cursor: pointer;
+    }
+    
+    .modal {
+      width: 80%;
+      height: 80%;
+      background-color: white;
+      border: 2px solid #2196f3;
+      border-radius: 10px;
+      position: fixed;
+      top: 10%;
+      left: 10%;
+      display: none;
+    }
+    
+    #content {
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+      overflow: auto;
+    }
+    
+    #close-btn {
+      float: right;
+      margin: 10px;
+      color: #2196f3;
+      cursor: pointer;
+    }
+    
+    #like-count {
+      float: right;
+      margin: 10px;
+      color: #2196f3;
+    }
+    
+    #new-post-btn {
+      margin: 20px;
+      padding: 10px 20px;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="new-post-btn" onclick="openNewPost()">返回</button>
+  <div id="posts-container"></div>
+
+  <div id="modal" class="modal">
+    <span id="close-btn" onclick="closeModal()">&times;</span>
+    <div id="content"></div>
+    <span id="like-count">点赞数: <span id="count"></span></span>
+  </div>
+
+  <script>
+    var modal = document.getElementById("modal");
+    var content = document.getElementById("content");
+
+    var posts = [
+      {
+        title: "UP主资源-小天才旧版本",
+        content: "资源正在上线",
+        likes: 3000
+      },
+      {
+        title: "帖子标题2",
+        content: "帖子内容2",
+        likes: 0
+      },
+      {
+        title: "帖子标题3",
+        content: "帖子内容3",
+        likes: 0
+      }
+    ];
+
+    function createPostElement(post) {
+      var postElement = document.createElement("div");
+      postElement.className = "post";
+      postElement.innerHTML = post.title;
+
+      var likeButton = document.createElement("span");
+      likeButton.className = "like-btn";
+      likeButton.innerHTML = "♥";
+      likeButton.addEventListener("click", function(event) {
+        event.stopPropagation();
+        likePost(post);
+      });
+
+      postElement.appendChild(likeButton);
+
+      postElement.addEventListener("click", function() {
+        showModal(post);
+      });
+
+      return postElement;
+    }
+
+    function renderPosts() {
+      var postsContainer = document.getElementById("posts-container");
+      postsContainer.innerHTML = "";
+
+      for (var i = 0; i < posts.length; i++) {
+        var postElement = createPostElement(posts[i]);
+        postsContainer.appendChild(postElement);
+      }
+    }
+
+    function openNewPost() {
+      window.open("index.html", "_blank");
+    }
+
+    function showModal(post) {
+      content.innerHTML = post.content;
+      document.getElementById("count").innerHTML = post.likes;
+      modal.style.display = "block";
+    }
+
+    function closeModal() {
+      modal.style.display = "none";
+    }
+
+    function likePost(post) {
+      post.likes++;
+      document.getElementById("count").innerHTML = post.likes;
+    }
+
+    renderPosts();
+  </script>
+</body>
+</html>
