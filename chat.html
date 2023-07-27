@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>聊天社区</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+        }
+        header {
+            background-color: #5D9CEC;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .back-button {
+            color: #FFFFFF;
+            background-color: #337AB7;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        .hint {
+            color: #FFFFFF;
+            font-size: 18px;
+            margin-right: 10px;
+        }
+        iframe {
+            width: 100%;
+            height: calc(100% - 50px); /* 考虑到顶部的高度，计算iframe的高度 */
+            border: none;
+        }
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const backButton = document.querySelector('.back-button');
+            backButton.addEventListener('click', () => {
+                window.location.href = 'index.html';
+            });
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="back-button">&#8678;</div>
+        <div class="hint">此部分内容由codemao提供，请登录编程猫账号</div>
+    </header>
+    <iframe src="https://player.codemao.cn/new/83448395"></iframe>
+</body>
+</html>

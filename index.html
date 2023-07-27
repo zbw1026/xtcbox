@@ -3,6 +3,44 @@
 <head>
   <title>小天才资源库</title>
   <link rel="shortcut icon" href="image\logo.png" type="image/x-icon">
+  <script>
+     // 随机选择一个经验句子
+     function getRandomExperience() {
+            // 假设经验内容保存在一个数组里
+            var experiences = [
+                // 将experience.txt中的内容按行放入数组中
+                "💡安卓系统是由谷歌开发的开放源代码操作系统。",
+                "💡安卓系统是目前全球市场份额最大的手机操作系统。",
+                "💡安卓系统支持数百万款应用程序的下载和安装。",
+                "💡安卓系统允许用户自定义和个性化手机界面和设置。",
+                "💡安卓系统提供强大的多任务处理能力，同时运行多个应用程序。",
+                "💡安卓系统支持多种连接和通信技术，如蓝牙和Wi-Fi。",
+                "💡安卓系统拥有丰富的社交媒体和即时通讯应用程序。",
+                "💡安卓系统提供高级的安全特性，如指纹识别和面部解锁。",
+                "💡安卓系统可以与其他设备进行无缝连接和同步，如智能家居设备。",
+                "💡安卓系统不仅用于手机和手表，还广泛应用于平板电脑和智能电视等设备。",
+                "💡操作需要先打开ADB调试模式。",
+                "💡超级恢复会清空手表上的本地数据。",
+                "💡破解手表：解锁手表的限制，拓展更多的玩法和功能。"
+]
+                // ...
+
+            var randomIndex = Math.floor(Math.random() * experiences.length);
+            return experiences[randomIndex];
+        }
+
+        // 刷新经验内容
+        function refreshExperience() {
+            var experienceBox = document.getElementById("experienceBox");
+            experienceBox.innerHTML = getRandomExperience();
+        }
+
+        // 当页面加载完成时执行
+        window.onload = function() {
+            refreshExperience(); // 初始化显示经验
+            setInterval(refreshExperience, 3000); // 每5秒刷新经验
+        };
+</script>
   <style>
     :root {
       --primary-color: #2196f3;
@@ -67,7 +105,8 @@
       </marquee>
     </div>
      <h4>没有找到想要的资源？<a href="QQ group.html">点我查看更多</a></h4>
-  <div class="resource">
+     <div id="experienceBox"></div>  
+     <div class="resource">
     <img src="image\文件夹.png" alt="图标" class="icon" style="width: 100px;">
     <h3 style="color: white;">[荐]酷腕市场 应用在我手中~</h3>
     <a href="https://wwu.lanzoub.com/icuRB110kxta" class="download-button" style="margin-left: auto;">下载</a>
@@ -88,8 +127,13 @@
     <a href="watchapp.html" class="download-button" style="margin-left: auto;">前往</a>
   </div>
   <div class="resource">
+    <img src="image\提示.png" alt="图标" class="icon" style="width: 100px;">
+    <h3 style="color: white;">教程资源</h3>
+    <a href="Community.html" class="download-button" style="margin-left: auto;">前往</a>
+  </div>
+  <div class="resource">
     <img src="image\社区.png" alt="图标" class="icon" style="width: 100px;">
-    <h3 style="color: white;">教程社区</h3>
+    <h3 style="color: white;">聊天社区</h3>
     <a href="Community.html" class="download-button" style="margin-left: auto;">前往</a>
   </div>
   <div>
