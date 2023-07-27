@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>社区网站</title>
+  <title>小天才社区</title>
+  <link rel="shortcut icon" href="image\网站.png" type="image/x-icon">
   <style>
     .post {
       width: 80%;
@@ -66,7 +67,7 @@
   </style>
 </head>
 <body>
-  <button id="new-post-btn" onclick="openNewPost()">返回</button>
+  <button id="new-post-btn" onclick="window.location.href = 'index.html'">返回</button>
   <div id="posts-container"></div>
 
   <div id="modal" class="modal">
@@ -81,18 +82,23 @@
 
     var posts = [
       {
-        title: "UP主资源-小天才root文件",
-        content: "请前往蓝奏云下载https://wwu.lanzoub.com/b04ead45g密码:114514，持续更新中",
+        title: "<p>UP主资源-小天才root文件<br>作者：苦力怕不暴</p>",
+        content: "<p>🕓7/24<br>请前往蓝奏云下载https://wwu.lanzoub.com/b04ead45g密码:114514，持续更新中<p>",
         likes: 3000
       },
       {
-        title: "帖子标题2",
-        content: "帖子内容2",
+        title: "<p>短接教程<br>作者：苦力怕不暴</p>",
+        content: "<p>🕓7/26<br>测试</p>",
         likes: 0
       },
       {
-        title: "帖子标题3",
-        content: "帖子内容3",
+        title: "<p>UP主资源-小天才app低版本文件<br>作者：苦力怕不暴</p>",
+        content: "<p>🕓7/26<br>测试</p>",
+        likes: 3000
+      },
+      {
+        title: "<p>什么是adb<br>作者：ChatGPT</p>",
+        content: "<p>🕓7/27<br>ADB是Android Debug Bridge（Android调试桥）的缩写，它是一种用于与Android设备进行通信和调试的命令行工具。ADB提供了一组命令，可以通过USB连接或无线网络连接与Android设备进行通信，并执行各种操作，如安装应用程序、发送shell命令、拷贝文件、查看日志等。使用ADB，开发人员可以在开发和调试Android应用程序时方便地与设备进行交互。它还提供了一些高级功能，如屏幕录制、模拟触摸输入、模拟电话呼叫等，这些功能可以用于应用程序测试和性能分析。需要注意的是，ADB是面向开发者和高级用户的工具，需要一定的技术知识和操控能力。在使用ADB之前，通常需要在计算机上安装Android SDK，并配置设备的开发者选项和USB调试模式。<p>",
         likes: 0
       }
     ];
@@ -104,7 +110,7 @@
 
       var likeButton = document.createElement("span");
       likeButton.className = "like-btn";
-      likeButton.innerHTML = "♥";
+      likeButton.innerHTML = "♥99+";
       likeButton.addEventListener("click", function(event) {
         event.stopPropagation();
         likePost(post);
@@ -127,10 +133,6 @@
         var postElement = createPostElement(posts[i]);
         postsContainer.appendChild(postElement);
       }
-    }
-
-    function openNewPost() {
-      window.open("index.html", "_blank");
     }
 
     function showModal(post) {
