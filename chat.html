@@ -32,6 +32,14 @@
             font-size: 20px;
             cursor: pointer;
         }
+        .open-button {
+            color: #FFFFFF;
+            background-color: #337AB7;
+            border-radius: 5px;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
         .hint {
             color: #FFFFFF;
             font-size: 18px;
@@ -49,13 +57,19 @@
             backButton.addEventListener('click', () => {
                 window.location.href = 'index.html';
             });
+
+            const openButton = document.querySelector('.open-button');
+            openButton.addEventListener('click', () => {
+                window.open('https://player.codemao.cn/new/83448395');
+            });
         });
     </script>
 </head>
 <body>
     <header>
         <div class="back-button">&#8678;</div>
-        <div class="hint">此部分内容由codemao提供，请登录编程猫账号</div>
+        <div class="hint">请登录编程猫账号，页面异常请点击打开链接</div>
+        <div class="open-button">打开链接</div>
     </header>
     <iframe src="https://player.codemao.cn/new/83448395"></iframe>
 </body>
