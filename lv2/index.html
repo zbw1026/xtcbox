@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会员权益</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .membership-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .membership-card {
+            border-radius: 10px;
+            background-color: #666;
+            padding: 20px;
+            margin-bottom: 20px;
+            width:200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .membership-card img {
+            max-width: 100%;
+            border-radius: 100%;
+            margin-bottom: 30px;
+        }
+
+        .membership-card h3 {
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .membership-card p {
+            margin-top: 10px;
+            text-align: center;
+        }
+        a{
+            color: white;
+        }
+        .centered-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .centered-button button {
+        background-color: white;
+        color: black;
+    }
+    .container {
+        display: flex;
+        align-items: center;
+    }
+
+    .image {
+        margin-right: 10px;
+    }
+    </style>
+    <script>
+    function openWindow() {
+    var text = "qq:3093711629";
+    alert(text);
+}
+    </script>
+</head>
+<body>
+    <div class="container">
+    <img src="lv2.png" alt="图片" class="image">
+    <h2 class="a">Lv2权益一览</h2>
+</div>
+    <div class="membership-container">
+        <div class="membership-card">
+            <img src="文件夹.png" alt="更多文件">
+            <h3>更多文件</h3>
+            <p>满足您的不同需求</p>
+        </div>
+
+        <div class="membership-card">
+            <img src="钻石.png" alt="专属群聊">
+            <h3>专属群聊</h3>
+            <p>避免小白的打扰</p>
+        </div>
+
+        <div class="membership-card">
+            <img src="更多.png" alt="其他权益">
+            <h3>其他权益</h3>
+            <p>更多权益敬请期待</p>
+        </div>
+    </div>
+    <div class="centered-button">
+        <button onclick="openWindow()">点击打开窗口</button>
+    </div>
+    <a href="">管理员</a>
+  </body>
+</html>
