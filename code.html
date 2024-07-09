@@ -1,0 +1,57 @@
+<!DOCTYPE html>  
+<html>  
+  <title>资源码</title>
+  <button id="new-post-btn" onclick="window.location.href = 'index.html'">返回</button>  
+  <head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <style>  
+      body {  
+        margin: 0;  
+        padding: 0;  
+        font-family: Arial, sans-serif;  
+        background-color: #f4f4f4;  
+      }  
+      .container {  
+        max-width: 400px;  
+        margin: 0 auto;  
+        padding: 20px;  
+      }  
+      input[type="number"] {  
+        width: 100%;  
+        padding: 10px;  
+        border-radius: 4px;  
+        border: 1px solid #ccc;  
+      }  
+      button {  
+        width: 100%;  
+        padding: 10px;  
+        background-color: #2196f3;  
+        color: #fff;  
+        border: none;  
+        border-radius: 4px;  
+        cursor: pointer;  
+      }  
+    </style>  
+  </head>  
+  <body>  
+    <div class="container">  
+      <input type="number" id="numberInput" placeholder="请输入三位口令">  
+      <button onclick="redirect()">跳转</button>  
+    </div> 
+    <script>  
+      function redirect() {  
+        var numberStr = document.getElementById("numberInput").value;  
+        // 确保输入是字符串形式的3位数，并且小于"003"  
+        if (numberStr.length === 3 && parseInt(numberStr, 10) < 3) {  
+          // 由于我们确保了是3位数，这里可以直接比较字符串  
+          // 或者，更安全地，我们将其转换为整数并进行比较  
+          window.location.href = "detail.html?id=" + numberStr;  
+        } else {  
+          alert("请输入正确的三位数字");  
+        }  
+      }  
+    </script>
+  </body>  
+  </html>
+</body>  
+</html>
