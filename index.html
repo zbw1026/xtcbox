@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>小天才资源库</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
   <link rel="shortcut icon" href="image\logo.png" type="image/x-icon">
   <script>
      // 随机选择一个经验句子
@@ -145,6 +146,7 @@
 			<div class="slider-container">
 				<img src="ad\演示文稿1\2.jpg" alt="Image 2" onclick="window.location.href='#'">
 				<img src="ad\演示文稿1\1.jpg" alt="Image 1" onclick="window.location.href='http://lanmao.sbs/#/register?code=RKsP2Ca3'">
+        <img src="ad\演示文稿1\3.jpg" alt="Image 3" onclick="window.location.href='#'">
 				<div class="slider-prev" onclick="previousSlide()">&#8249;</div>
 				<div class="slider-next" onclick="nextSlide()">&#8250;</div>
         <script>
@@ -158,13 +160,11 @@
             } else if (index >= totalSlides) {
               index = 0;
             }
-            
-            // 隐藏所有图片
+
             for (var i = 0; i < totalSlides; i++) {
               slides[i].style.display = 'none';
             }
-            
-            // 显示当前图片
+
             slides[index].style.display = 'block';
             
             currentIndex = index;
@@ -177,20 +177,13 @@
           function previousSlide() {
             showSlide(currentIndex - 1);
           }
-          
-          // 初始显示第一张图片
+
           showSlide(0);
-          
-          // 每2秒切换一张图片
+
           setInterval(nextSlide, 2000);
         </script>
 			</div>有找到想要的资源？<a href="QQ group.html">点我查看更多</a></h4>
      <div id="experienceBox"></div>  
-     <div class="resource">
-    <img src="image\文件夹.png" alt="图标" class="icon" style="width: 100px;">
-    <h3 style="color: white;">酷腕市场 应用在我手中~ 已停止更新支持</h3>
-    <a href="https://wwu.lanzoub.com/icuRB110kxta" class="download-button" style="margin-left: auto;">下载</a>
-  </div>
   <div class="resource">
     <img src="image\口令.png" alt="图标" class="icon" style="width: 100px;">
     <h3 style="color: white;">[New]资源码查找</h3>
@@ -206,6 +199,7 @@
     <h3 style="color: white;">教程资源</h3>
     <a href="Community.html" class="download-button" style="margin-left: auto;">前往</a>
   </div>
+  <h2>推荐</h2>
   <div class="resource" style="display: flex;">
     <img src="image\文件夹.png" alt="图标" class="icon" style="width: 100px;">
     <h3 style="color: white;">超级恢复软件</h3>
@@ -221,6 +215,7 @@
     <h3 style="color: white;">手表软件</h3>
     <a href="watchapp.html" class="download-button" style="margin-left: auto;">前往</a>
   </div>
+  <hr>
   <div>
     <a class="image-button" href="https://space.bilibili.com/1814635519" target="_blank">
       <img src="image\bili.png" alt="Button Image">
@@ -229,6 +224,8 @@
       <img src="image\网站.png" alt="Button Image">
     </a>
     <p class="button-text">由苦力怕不暴维护&copy;2023</p>
+    <br>
+    <p>本网页不会收集您的任何信息，请放心使用<a href="update.html">更新日志</a></p>
   </div>
 </body>
 </html>
