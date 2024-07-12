@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>资源检索</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script>
+        var appList = [
+            {
+                name: 'root资源',
+                code: '001'
+            },
+            {
+                name: '超级恢复',
+                code: '002'
+            },
+        ];
+        
+        function search() {
+            var searchTerm = document.getElementById('searchTerm').value;
+            
+            var resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '';
+            
+            if (searchTerm.trim() === '') {
+                var emptyInputDiv = document.createElement('div');
+                emptyInputDiv.innerText = '请输入搜索关键字。';
+                resultsContainer.appendChild(emptyInputDiv);
+                return;
+            }
+            
+            for (var i = 0; i < appList.length; i++) {
+                var app = appList[i];
+                var appName = app.name;
+                var appCode = app.code;
+                
+                if (appName.toLowerCase().includes(searchTerm.toLowerCase())) {
+                    var appDiv = document.createElement('div');
+                    appDiv.className = 'app-result';
+                    
+                    var appNameElement = document.createElement('div');
+                    appNameElement.className = 'app-name';
+                    appNameElement.innerText = appName;
+                    
+                    var appCodeElement = document.createElement('div');
+                    appCodeElement.className = 'app-code';
+                    appCodeElement.innerText = appCode;
+                    
+                    var jumpButton = document.createElement('button');
+                    jumpButton.className = 'jump-button';
+                    jumpButton.innerText = '跳转';
+                    jumpButton.setAttribute('onclick', 'sendAppNumber("' + appCode + '")');
+                    
+                    appDiv.appendChild(appNameElement);
+                    appDiv.appendChild(appCodeElement);
+                    appDiv.appendChild(jumpButton);
+                    
+                    resultsContainer.appendChild(appDiv);
+                }
+            }
+        }
+        
+        function sendAppNumber(code) {
+            // 执行相应操作，替换为实际的代码
+            // 例如，打开传递应用编码的接收页面
+            window.location.href = "detail.html?id=" + code;
+        }
+    </script>
+</head>
+<body>
+    <button id="new-post-btn" onclick="window.location.href = 'index.html'">返回</button> 
+    <hr> 
+    <div class="search-container">
+        <input type="text" id="searchTerm" class="search-box" placeholder="输入搜索关键字">
+        <br>
+        <button onclick="search()" class="search-button">搜索</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+</body>
+</html>

@@ -105,4 +105,39 @@ body {
         margin: 10px;
         color: #2196f3;
       }
-      
+      .search-button {
+        margin-top: 10px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #2196f3;
+        color: white;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    
+    .search-results {
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .app-result {
+        margin-bottom: 10px;
+    }
+    
+    .app-name {
+        font-weight: bold;
+        color: #2196f3;
+    }
+    
+    .app-code {
+        margin-top: 5px;
+        color: gray;
+    }
+    .search-box {
+      padding: 10px;
+      border: 2px solid #2196f3;
+      border-radius: 20px;
+      width: 800px;
+      outline: none;
+  }
+ 
