@@ -15,8 +15,7 @@
     <script>  
       function redirect() {  
         var numberStr = document.getElementById("numberInput").value;  
-        // 确保输入是字符串形式的3位数，并且小于"003"  
-        if (numberStr.length === 3 && parseInt(numberStr, 10) < 3) {  
+        if (numberStr.length === 3 && parseInt(numberStr, 10) < 200) {  
           // 由于我们确保了是3位数，这里可以直接比较字符串  
           // 或者，更安全地，我们将其转换为整数并进行比较  
           window.location.href = "detail.html?id=" + numberStr;  
