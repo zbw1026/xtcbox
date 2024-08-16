@@ -81,7 +81,8 @@ body {
     '004': '[应用合集]娱乐游戏',  
     '005': '[应用合集]实用工具',  
     '006': '[应用合集]酷盒子专区',
-    '007': '[资源]电脑软件'
+    '007': '[资源]电脑软件',
+    '008': '[资源]抓包工具 请合法使用'
 };  
   
 function setH3TextBasedOnUrl() {  
@@ -100,7 +101,7 @@ function setH3TextBasedOnUrl() {
   
 window.onload = setH3TextBasedOnUrl
       </script>  </h2>
-    <p>如遇输入密码均为1234</p>
+    <p>如遇输入密码均为1234或0000</p>
       <button class="blue-rounded-button" onclick="redirectToPage()">点击跳转</button>  
   </div>  
     
@@ -131,6 +132,8 @@ window.onload = setH3TextBasedOnUrl
           break;
           case '007':  
           pageToRedirect = 'https://wwu.lanzoub.com/b04ead45g';  
+          case '008':  
+          pageToRedirect = 'https://www.123pan.com/s/mWczVv-Z9uf3';  
       }  
         
       window.location.href = pageToRedirect;  
