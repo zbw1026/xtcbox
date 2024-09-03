@@ -6,15 +6,17 @@
   <link rel="shortcut icon" href="image\logo.png" type="image/x-icon">
   <link rel="stylesheet" href="./style.css">
 </head>
-  <body>
+<body>
+  <div class="container">
     <button id="new-post-btn" onclick="window.location.href = 'index.html'">返回</button>  
     <div class="button-container">
-      <div class="category" onclick="openPage('https://wwu.lanzoub.com/b04e56uje')">生活便利</div>
-      <div class="category" onclick="openPage('https://wwu.lanzoub.com/b04e56ukf')">娱乐游戏</div>
-      <div class="category" onclick="openPage('https://wwu.lanzoub.com/b04e56uni')">实用工具</div>
-      <div class="category" onclick="openPage('https://wwu.lanzoub.com/b04duhmjg')">酷盒子专区</div>
+      <div class="category" onclick="openPage('detail.html?id=003')">生活便利</div>
+      <div class="category" onclick="openPage('detail.html?id=004')">娱乐游戏</div>
+      <div class="category" onclick="openPage('detail.html?id=005')">实用工具</div>
+      <div class="category" onclick="openPage('detail.html?id=006')">酷盒子专区</div>
     </div>
-  </body>
+    <p>暂时没有更多了┬┬﹏┬┬</p>
+  </div>
   <script>
     // 返回按钮点击事件
     document.querySelector('.back-button').addEventListener('click', function() {
@@ -26,6 +28,5 @@
       window.open(url, '_blank');
     }
   </script>
-  <p>暂时没有更多了┬┬﹏┬┬</p>
 </body>
 </html>

@@ -1,30 +1,25 @@
-<!DOCTYPE html>  
-<html>  
+<!DOCTYPE html>
+<html>
+<head>
   <title>资源码</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
-  <button id="new-post-btn" onclick="window.location.href = 'index.html'">返回</button>  
-  <head>  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <link rel="stylesheet" href="./style.css">
-  </head>  
-  <body>  
-    <div class="container">  
-      <input type="number" id="numberInput" placeholder="请输入三位口令">  
-      <button onclick="redirect()">跳转</button>  
-    </div> 
-    <script>  
-      function redirect() {  
-        var numberStr = document.getElementById("numberInput").value;  
-        if (numberStr.length === 3 && parseInt(numberStr, 10) < 200) {  
-          // 由于我们确保了是3位数，这里可以直接比较字符串  
-          // 或者，更安全地，我们将其转换为整数并进行比较  
-          window.location.href = "detail.html?id=" + numberStr;  
-        } else {  
-          alert("请输入正确的三位数字");  
-        }  
-      }  
-    </script>
-  </body>  
-  </html>
-</body>  
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <button id="new-post-btn" onclick="window.location.href = 'index.html'">返回</button> 
+  <div class="container">
+    <input type="number" id="numberInput" placeholder="请输入三位口令">
+    <button onclick="redirect()">跳转</button>
+  </div>
+  <script>
+    function redirect() {
+      var numberStr = document.getElementById("numberInput").value;
+      if (numberStr.length === 3 && parseInt(numberStr, 10) < 200) {
+        window.location.href = "detail.html?id=" + numberStr;
+      } else {
+        alert("请输入正确的三位数字");
+      }
+    }
+  </script>
+</body>
 </html>

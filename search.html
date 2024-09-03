@@ -3,7 +3,81 @@
 <head>
     <title>资源检索</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-box {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .search-button {
+            background-color: #2196f3;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .search-button:hover {
+            background-color: #1976d2;
+        }
+        .app-result {
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .app-name {
+            font-weight: bold;
+        }
+        .app-code {
+            color: #666;
+        }
+        .jump-button {
+            background-color: #2196f3;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .jump-button:hover {
+            background-color: #1976d2;
+        }
+        #new-post-btn {
+            background-color: #2196f3;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        #new-post-btn:hover {
+            background-color: #1976d2;
+        }
+    </style>
     <script>
         var appList = [
             {
@@ -98,12 +172,13 @@
 </head>
 <body>
     <button id="new-post-btn" onclick="window.location.href = 'index.html'">返回</button> 
-    <hr> 
-    <div class="search-container">
-        <input type="text" id="searchTerm" class="search-box" placeholder="输入搜索关键字">
-        <br>
-        <button onclick="search()" class="search-button">搜索</button>
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="searchTerm" class="search-box" placeholder="输入搜索关键字">
+            <br>
+            <button onclick="search()" class="search-button">搜索</button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
     </div>
-    <div class="search-results" id="searchResults"></div>
 </body>
 </html>

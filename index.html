@@ -33,7 +33,23 @@
         // 刷新经验内容
         function refreshExperience() {
             var experienceBox = document.getElementById("experienceBox");
-            experienceBox.innerHTML = getRandomExperience();
+            experienceBox.style.opacity = 0; // 先将内容隐藏
+            setTimeout(function() {
+                experienceBox.innerHTML = getRandomExperience();
+                experienceBox.style.opacity = 1; // 再逐渐显示
+            }, 300); // 延迟300毫秒以确保动画效果
+        }
+
+        // 复制经验内容到剪贴板
+        function copyExperience() {
+            var experienceBox = document.getElementById("experienceBox");
+            var tempInput = document.createElement("input");
+            tempInput.value = experienceBox.innerText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+            alert("经验句子已复制到剪贴板！");
         }
 
         // 当页面加载完成时执行
@@ -45,192 +61,265 @@
   <style>
     :root {
       --primary-color: #2196f3;
+      --background-color: #f5f5f5;
+      --text-color: #212121;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 20px;
     }
 
     .resource {
-      background-color: var(--primary-color);
+      background-color: white;
       border-radius: 10px;
       padding: 20px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .resource:hover {
+      transform: translateY(-5px);
     }
 
     .icon {
-      margin-right: 10px;
+      margin-right: 20px;
+      width: 60px;
+      height: 60px;
+      border: 5px solid var(--primary-color); /* 添加蓝色边框 */
+      border-radius: 10px; /* 圆角框 */
+      background-color: var(--primary-color); /* 实心填充 */
+      padding: 5px; /* 调整内边距以适应图片 */
     }
 
     .download-button {
-      background-color: white;
-      color: var(--primary-color);
+      background-color: var(--primary-color);
+      color: white;
       padding: 10px 20px;
       border-radius: 5px;
       text-decoration: none;
+      margin-left: auto;
+      transition: background-color 0.3s;
     }
 
     .download-button:hover {
-      background-color: #e3f2fd;
+      background-color: #1976d2;
     }
-    float:lift{
-  float: lift;
-}
-.image-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  outline: none;
-  padding: 0;
-  width: 50px; /* 自定义按钮宽度 */
-  height: 50px; /* 自定义按钮高度 */
-  display: inline-block;
-  margin-right: 10px;
-}
 
-.image-button img {
-  max-width: 100%;
-  display: block;
-}
-.button-text {
-  display: inline-block;
-  margin-top: -10px;
-  font-size: 25px;
-  color:#212121
-}
-/* 轮播图容器样式 */
-.slider-container {
-            position: relative;
-            width: 100%;
-            max-width: 800px; /* 设置轮播图最大宽度 */
-            margin: 0 auto;
-            overflow: hidden;
-        }
-        
-        /* 图片样式 */
-        .slider-container img {
-            width: 100%;
-            height: auto;
-        }
-        
-        /* 左右箭头样式 */
-        .slider-prev,
-        .slider-next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 30px;
-            height: 30px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: #fff;
-            text-align: center;
-            line-height: 30px;
-            cursor: pointer;
-        }
-        
-        .slider-prev {
-            left: 10px;
-        }
-        
-        .slider-next {
-            right: 10px;
-        }
+    .slider-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto 40px;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .slider-container img {
+      width: 100%;
+      height: auto;
+      display: none;
+      border-radius: 10px;
+    }
+
+    .slider-prev,
+    .slider-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      text-align: center;
+      line-height: 40px;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+    }
+
+    .slider-prev {
+      left: 10px;
+    }
+
+    .slider-next {
+      right: 10px;
+    }
+
+    .slider-prev:hover,
+    .slider-next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    #experienceBox {
+      opacity: 1;
+      transition: opacity 0.5s ease-in-out;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .image-button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      width: 50px;
+      height: 50px;
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .image-button img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .button-text {
+      display: inline-block;
+      margin-top: -10px;
+      font-size: 25px;
+      color: var(--text-color);
+    }
+
+    .marquee {
+      background-color: #e0e0e0;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .marquee a {
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+
+    .marquee a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: 0;
+      height: 1px;
+      background: #e0e0e0;
+      margin: 20px 0;
+    }
   </style>
 </head>
 <body>
-    <h1 style="color: black;">小天才资源库</h1>
-    <div style="background-color: #ccc; padding: 10px;">
+    <h1>小天才资源库</h1>
+    <div class="marquee">
       <marquee behavior="scroll" direction="left">
         【最近上架】App Cloner<a href="detail.html?id=009">查看详情</a><br>本网站由SWG-imoo提供资源支持<a href="QQ group.html">加入我们</a>
       </marquee>
     </div>
-    <div class="card">
-			<div class="slider-container">
-        <img src="ad\演示文稿1\1.jpg" alt="Image 1" onclick="window.location.href='http://lanmao.sbs/#/register?code=RKsP2Ca3'">
-        <img src="ad\演示文稿1\2.jpg" alt="Image 2" onclick="window.location.href='#'">
-				<img src="ad\演示文稿1\3.jpg" alt="Image 3" onclick="window.location.href='#'">
-				<div class="slider-prev" onclick="previousSlide()">&#8249;</div>
-				<div class="slider-next" onclick="nextSlide()">&#8250;</div>
-        <script>
-          var currentIndex = 0;
-          var slides = document.querySelectorAll('.slider-container img');
-          var totalSlides = slides.length;
-          
-          function showSlide(index) {
-            if (index < 0) {
-              index = totalSlides - 1;
-            } else if (index >= totalSlides) {
-              index = 0;
-            }
-
-            for (var i = 0; i < totalSlides; i++) {
-              slides[i].style.display = 'none';
-            }
-
-            slides[index].style.display = 'block';
-            
-            currentIndex = index;
-          }
-          
-          function nextSlide() {
-            showSlide(currentIndex + 1);
-          }
-          
-          function previousSlide() {
-            showSlide(currentIndex - 1);
+    <div class="slider-container">
+      <img src="ad\演示文稿1\1.jpg" alt="Image 1" onclick="window.location.href='#'">
+      <img src="ad\演示文稿1\2.jpg" alt="Image 2" onclick="window.location.href='http://lanmao.sbs/#/register?code=RKsP2Ca3'">
+      <img src="ad\演示文稿1\3.jpg" alt="Image 3" onclick="window.location.href='#'">
+      <div class="slider-prev" onclick="previousSlide()">&#8249;</div>
+      <div class="slider-next" onclick="nextSlide()">&#8250;</div>
+      <script>
+        var currentIndex = 0;
+        var slides = document.querySelectorAll('.slider-container img');
+        var totalSlides = slides.length;
+        
+        function showSlide(index) {
+          if (index < 0) {
+            index = totalSlides - 1;
+          } else if (index >= totalSlides) {
+            index = 0;
           }
 
-          showSlide(0);
+          for (var i = 0; i < totalSlides; i++) {
+            slides[i].style.display = 'none';
+          }
 
-          setInterval(nextSlide, 3000);
-        </script>
-     <div id="experienceBox"></div>  </div>
-     <div class="resource">
-      <img src="image\搜索.png" alt="暂无图片" class="icon" style="width: 100px;">
-      <h3 style="color: white;">[NEW]资源搜索</h3>
-      <a href="search.html" class="download-button" style="margin-left: auto;">前往</a>
+          slides[index].style.display = 'block';
+          
+          currentIndex = index;
+        }
+        
+        function nextSlide() {
+          showSlide(currentIndex + 1);
+        }
+        
+        function previousSlide() {
+          showSlide(currentIndex - 1);
+        }
+
+        showSlide(0);
+
+        setInterval(nextSlide, 3000);
+      </script>
     </div>
-     <div class="resource">
-    <img src="image\口令.png" alt="图标" class="icon" style="width: 100px;">
-    <h3 style="color: white;">[UP推荐]资源码查找</h3>
-    <a href="code.html" class="download-button" style="margin-left: auto;">前往</a>
-  </div>
-  <div class="resource">
-    <img src="image\社区.png" alt="图标" class="icon" style="width: 100px;">
-    <h3 style="color: white;">聊天社区</h3>
-    <a href="chat.html" class="download-button" style="margin-left: auto;">前往</a>
-  </div>
-  <div class="resource">
-    <img src="image\提示.png" alt="图标" class="icon" style="width: 100px;">
-    <h3 style="color: white;">教程资源</h3>
-    <a href="Community.html" class="download-button" style="margin-left: auto;">前往</a>
-  </div>
-  <h2>资源广场</h2>
-  <div class="resource" style="display: flex;">
-    <img src="image\文件夹.png" alt="图标" class="icon" style="width: 100px;">
-    <h3 style="color: white;">超级恢复软件</h3>
-    <a href="detail.html?id=002" class="download-button" style="margin-left: auto;">下载</a>
-</div>
-  <div class="resource">
-    <img src="image\文件夹.png" alt="图标" class="icon" style="width: 100px;">
-    <h3 style="color: white;">电脑·破解软件</h3>
-    <a href="detail.html?id=007" class="download-button" style="margin-left: auto;">下载</a>
-  </div>
-  <div class="resource">
-    <img src="image\文件夹.png" alt="图标" class="icon" style="width: 100px;">
-    <h3 style="color: white;">手表软件</h3>
-    <a href="watchapp.html" class="download-button" style="margin-left: auto;">前往</a>
-  </div>
-<h4>有找到想要的资源？<a href="QQ group.html">点我加入QQ群</a></h4>
-  <hr>
-  <div>
-    <a class="image-button" href="https://space.bilibili.com/1814635519" target="_blank">
-      <img src="image\bili.png" alt="Button Image">
-    </a>
-    <a class="image-button" href="https://zbw1026.github.io/coolbox/" target="_blank">
-      <img src="image\网站.png" alt="Button Image">
-    </a>
-    <p>由B站UP苦力怕不暴维护，SWG-imoo提供资源支持&copy;2023-2024</p>
+    <div id="experienceBox" onclick="copyExperience()"></div>
+    <div class="resource">
+      <img src="image\搜索.png" alt="暂无图片" class="icon">
+      <h3>[NEW]资源搜索</h3>
+      <a href="search.html" class="download-button">前往</a>
+    </div>
+    <div class="resource">
+      <img src="image\口令.png" alt="图标" class="icon">
+      <h3>[UP推荐]资源码查找</h3>
+      <a href="code.html" class="download-button">前往</a>
+    </div>
+    <div class="resource">
+      <img src="image\社区.png" alt="图标" class="icon">
+      <h3>聊天社区</h3>
+      <a href="chat.html" class="download-button">前往</a>
+    </div>
+    <div class="resource">
+      <img src="image\提示.png" alt="图标" class="icon">
+      <h3>教程资源</h3>
+      <a href="#" class="download-button">已下架</a>
+    </div>
+    <h2>资源广场</h2>
+    <div class="resource">
+      <img src="image\文件夹.png" alt="图标" class="icon">
+      <h3>超级恢复软件</h3>
+      <a href="detail.html?id=002" class="download-button">下载</a>
+    </div>
+    <div class="resource">
+      <img src="image\文件夹.png" alt="图标" class="icon">
+      <h3>电脑·破解软件</h3>
+      <a href="detail.html?id=007" class="download-button">下载</a>
+    </div>
+    <div class="resource">
+      <img src="image\文件夹.png" alt="图标" class="icon">
+      <h3>手表软件</h3>
+      <a href="watchapp.html" class="download-button">前往</a>
+    </div>
+    <h4>有找到想要的资源？<a href="QQ group.html">点我加入QQ群</a></h4>
     <hr>
-    <p>本网页不会收集您的任何信息，请放心使用<a href="update.html">更新日志</a></p>
-  </div>
+    <div>
+      <a class="image-button" href="https://space.bilibili.com/1814635519" target="_blank">
+        <img src="image\bili.png" alt="Button Image">
+      </a>
+      <a class="image-button" href="https://zbw1026.github.io/coolbox/" target="_blank">
+        <img src="image\网站.png" alt="Button Image">
+      </a>
+      <p>由B站UP苦力怕不暴维护，SWG-imoo提供资源支持&copy;2023-2024</p>
+      <hr>
+      <p>本网页不会收集您的任何信息，请放心使用<a href="update.html">更新日志</a></p>
+    </div>
 </body>
 </html>
