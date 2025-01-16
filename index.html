@@ -9,22 +9,10 @@
      function getRandomExperience() {
             // 假设经验内容保存在一个数组里
             var experiences = [
-                // 将experience.txt中的内容按行放入数组中
                 "💡安卓系统是由谷歌开发的开放源代码操作系统。",
                 "💡安卓系统是目前全球市场份额最大的手机操作系统。",
-                "💡安卓系统支持数百万款应用程序的下载和安装。",
-                "💡安卓系统允许用户自定义和个性化手机界面和设置。",
-                "💡安卓系统提供强大的多任务处理能力，同时运行多个应用程序。",
-                "💡安卓系统支持多种连接和通信技术，如蓝牙和Wi-Fi。",
-                "💡安卓系统拥有丰富的社交媒体和即时通讯应用程序。",
-                "💡安卓系统提供高级的安全特性，如指纹识别和面部解锁。",
-                "💡安卓系统可以与其他设备进行无缝连接和同步，如智能家居设备。",
-                "💡安卓系统不仅用于手机和手表，还广泛应用于平板电脑和智能电视等设备。",
-                "💡操作需要先打开ADB调试模式。",
-                "💡超级恢复会清空手表上的本地数据。",
-                "💡破解手表：解锁手表的限制，拓展更多的玩法和功能。"
-]
-                // ...
+                // 其他经验句子...
+            ];
 
             var randomIndex = Math.floor(Math.random() * experiences.length);
             return experiences[randomIndex];
@@ -65,10 +53,24 @@
             }, 2000);
         }
 
+        // 检测是否是移动设备
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
         // 当页面加载完成时执行
         window.onload = function() {
             refreshExperience(); // 初始化显示经验
             setInterval(refreshExperience, 3000); // 每5秒刷新经验
+
+            if (isMobileDevice()) {
+                // 创建下载提示与按钮
+                var downloadAppDiv = document.createElement("div");
+                downloadAppDiv.className = "download-app";
+                downloadAppDiv.innerHTML = '<p>在移动设备上使用更方便，现在就下载我们的App！</p>' +
+                                           '<a href="#" class="download-button">下载App</a>';
+                document.body.appendChild(downloadAppDiv);
+            }
         };
   </script>
   <style>
@@ -84,6 +86,7 @@
       color: var(--text-color);
       margin: 0;
       padding: 20px;
+      position: relative;
     }
 
     h1 {
@@ -251,6 +254,34 @@
       opacity: 1;
       transition: opacity 0.5s ease-in-out;
     }
+
+    /* 下载App提示与按钮样式 */
+    .download-app {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--background-color);
+      color: var(--text-color);
+      padding: 10px 20px;
+      border-radius: 5px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1001;
+      text-align: center;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .download-app p {
+      margin: 0;
+    }
+
+    .download-app .download-button {
+      margin-top: 10px;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -350,5 +381,32 @@
       <hr>
       <p>本网页不会收集您的任何信息，请放心使用<a href="update.html">更新日志</a></p>
     </div>
+<script>
+  // 检测是否是移动设备
+  function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
+  // 检测是否是App，包括XTCapp
+  function isApp() {
+    return /MyAppIdentifier|XTCapp/i.test(navigator.userAgent);
+  }
+
+  // 当页面加载完成时执行
+  window.onload = function() {
+    refreshExperience(); // 初始化显示经验
+    setInterval(refreshExperience, 3000); // 每5秒刷新经验
+
+    if (isMobileDevice() && !isApp()) {
+      // 创建下载提示与按钮
+      var downloadAppDiv = document.createElement("div");
+      downloadAppDiv.className = "download-app";
+      downloadAppDiv.innerHTML = '<p>我们正在逐步将移动版网页迁移至APP，欢迎使用“小天才资源库”app</p>' +
+                                 '<a href="#" class="download-button">下载App</a>';
+      document.body.appendChild(downloadAppDiv);
+    }
+  };
+</script>
+
 </body>
 </html>

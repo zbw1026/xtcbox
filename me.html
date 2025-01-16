@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>个人主页</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    /* 弹窗样式 */
+    .modal {
+      display: none; /* 默认隐藏 */
+      position: fixed; /* 固定位置 */
+      z-index: 1; /* 确保在最上层 */
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .donate-option img {
+      max-width: 100%;
+      height: auto;
+      margin: 10px 0;
+    }
+    .new-button {
+    width: 100%;
+    color:#888;
+    background-color: transparent; /* 设置背景颜色为透明 */
+    border: none; /* 移除边框 */
+    padding: 10px 20px; /* 添加一些内边距，使按钮看起来更大一些 */
+    font-size: 16px; /* 设置字体大小 */
+    cursor: pointer; /* 鼠标悬停时显示为手型 */
+    /* 你可以根据需要添加更多的样式 */
+    transition: background-color 0.3s ease; /* 添加背景颜色过渡效果 */
+}
+ 
+/* 添加鼠标悬停效果 */
+.new-button:hover {
+    background-color: #2196f3; /* 鼠标悬停时改变背景颜色 */
+    color: white; /* 鼠标悬停时改变文字颜色 */
+}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="white-box">
+      <h2>我的</h2>
+      <h3>当前版本: <span id="version"></span></h3>
+      <p id="update-message"></p>
+      <button id="check-update-btn" class="new-button">检查更新</button>
+      <hr>
+      <button id="donate-btn" class="new-button">赞赏</button>
+      <hr>
+      <button id="donate-btn" class="new-button">更新日志</button>
+      <p>Copyright © 2023-2025 SWG-imoo保留一切权利</p>
+    </div>
+  </div>
+
+  <!-- 更新信息弹窗 -->
+  <div id="update-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('update-modal')">&times;</span>
+      <h3>更新信息</h3>
+      <p id="update-message-modal"></p>
+      <p>升级内容：修复已知问题，我们一直勤奋努力的维护以及保持我们的app运行顺畅......</p>
+      <button id="download-update-btn" class="new-button" onclick="downloadUpdate()">下载升级包</button>
+    </div>
+  </div>
+
+  <!-- 赞赏弹窗 -->
+  <div id="donate-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('donate-modal')">&times;</span>
+      <h4>如果您觉得内容不错，欢迎赞赏</h4>
+      <div class="donate-option">
+        <img id="alipay-qrcode" src="ad\alipay.jpg" alt="支付宝二维码">
+        <p>支付宝赞赏</p>
+      </div>
+      <div class="donate-option">
+        <img id="wechat-qrcode" src="ad\wechat.jpg" alt="微信二维码">
+        <p>微信赞赏</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    const version = getQueryParam('v');
+    document.getElementById('version').textContent = version || '未知';
+
+    function compareVersions(currentVersion, latestVersion) {
+      // 简单的版本号比较逻辑
+      const currentParts = currentVersion.split('.').map(Number);
+      const latestParts = latestVersion.split('.').map(Number);
+
+      for (let i = 0; i < Math.max(currentParts.length, latestParts.length); i++) {
+        if (currentParts[i] < latestParts[i]) {
+          return false;
+        }
+        if (currentParts[i] > latestParts[i]) {
+          return true;
+        }
+      }
+      return true;
+    }
+
+    const latestVersion = '1.0.1'; // 假设这是最新的版本号
+
+    document.getElementById('check-update-btn').onclick = function() {
+      if (version && !compareVersions(version, latestVersion)) {
+        document.getElementById('update-message-modal').textContent = `新版本可用: ${latestVersion}`;
+        document.getElementById('update-modal').style.display = 'block';
+      } else {
+        document.getElementById('update-message').textContent = '您使用的是最新版本。';
+      }
+    };
+
+    document.getElementById('donate-btn').onclick = function() {
+      document.getElementById('donate-modal').style.display = 'block';
+    };
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+    }
+
+    function downloadUpdate() {
+      // 这里假设升级包的下载链接为 'update-package.zip'
+      window.location.href = 'update-package.zip';
+    }
+  </script>
+</body>
+</html>
