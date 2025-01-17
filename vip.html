@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>付费资源</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>VIP权益购买</h1>
+    <div class="white-box">
+      <h2>增值服务推荐</h2>
+      <div class="resource">
+        <h3>【优先回复】VIP客户答疑群进群卡密</h3>
+        <p>付款成功后凭卡密加入QQ群，未购买不给进，群号1006100559</p>
+        <p>价格: ¥5.88/永久</p>
+        <label><input type="checkbox" name="service" value="【优先回复】VIP客户答疑群进群卡密"> 选择此服务</label>
+      </div>
+    </div>
+    <div class="button-container">
+      <button onclick="submitSelection()">购买</button>
+    </div>
+  </div>
+
+  <script>
+    function submitSelection() {
+      const selectedServices = [];
+      const checkboxes = document.querySelectorAll('input[name="service"]:checked');
+      checkboxes.forEach(checkbox => {
+        selectedServices.push(checkbox.value);
+      });
+
+      if (selectedServices.length === 0) {
+        alert('请选择至少一项服务');
+        return;
+      }
+      alert('您选择了以下服务: ' + selectedServices.join(', ')+'，即将为您结算');
+      window.location.href = 'https://www.houfaka.com/links/517D93BD'; // 跳转到结算页面
+    }
+  </script>
+</body>
+</html>
