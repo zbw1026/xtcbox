@@ -3,7 +3,7 @@
 <head>
   <title>个人主页</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.style">
   <style>
     /* 弹窗样式 */
     .modal {
@@ -64,11 +64,33 @@
     background-color: #2196f3; /* 鼠标悬停时改变背景颜色 */
     color: white; /* 鼠标悬停时改变文字颜色 */
 }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .profile img {
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+
+    .greeting {
+      font-size: 18px;
+      color: #333;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="white-box">
+      <div class="profile">
+        <img id="profile-image" src="ad\user.png" alt="用户头像">
+        <span class="greeting">欢迎回来!</span>
+      </div>
       <h2>我的</h2>
       <h3>当前版本: <span id="version"></span></h3>
       <p id="update-message"></p>
@@ -76,8 +98,8 @@
       <hr>
       <button id="donate-btn" class="new-button">赞赏</button>
       <hr>
-      <button id="donate-btn" class="new-button">更新日志</button>
-      <p>Copyright © 2023-2025 SWG-imoo保留一切权利</p>
+      <button id="changelog-btn" class="new-button">更新日志</button>
+      <p>Copyright © 2023-2025 SWG-imoo</p>
     </div>
   </div>
 
@@ -148,6 +170,10 @@
       document.getElementById('donate-modal').style.display = 'block';
     };
 
+    document.getElementById('changelog-btn').onclick = function() {
+      // 这里可以添加弹出更新日志的逻辑
+    };
+
     function closeModal(modalId) {
       document.getElementById(modalId).style.display = 'none';
     }
@@ -156,6 +182,28 @@
       // 这里假设升级包的下载链接为 'update-package.zip'
       window.location.href = 'update-package.zip';
     }
-  </script>
+    // 检测用户代理是否为移动设备并且不是XTCapp
+    function detectMobileAndRedirect() {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(userAgent);
+        const isXTCapp = /XTCapp/i.test(userAgent);
+
+        if (isMobile && !isXTCapp) {
+            window.location.href = '404.html';
+        }
+    }
+
+    // 页面加载时执行检测函数
+    window.onload = function() {
+        detectMobileAndRedirect();
+    };
+
+    // 原有的获取查询参数的函数
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+</script>
 </body>
 </html>
