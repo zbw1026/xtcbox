@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
 <html>
 <head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
   <style>
     body {
       display: flex;
@@ -13,17 +13,39 @@
       font-family: 'Arial', sans-serif;
     }
     .container {
-      text-align: center;
       background: white;
       padding: 40px;
       border-radius: 10px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 600px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+    .header a {
+      color: #dc3023;
+      text-decoration: none;
+    }
+    .header a:hover {
+      text-decoration: underline;
+    }
+    .breadcrumb {
+      margin-bottom: 20px;
+      color: #666;
     }
     .rounded-image {
       border-radius: 10px;
       overflow: hidden;
-      width: 200px;
-      height: 200px;
+      width: 100px;
+      height: 100px;
       margin: 0 auto 20px;
     }
     .rounded-image img {
@@ -33,12 +55,14 @@
     }
     .button-container {
       margin-top: 20px;
+      display: flex;
+      justify-content: center;
     }
     .blue-rounded-button {
       display: inline-block;
       padding: 10px 20px;
       color: #fff;
-      background-color: #2196f3;
+      background-color: #dc3023;
       border-radius: 5px;
       text-align: center;
       text-decoration: none;
@@ -52,7 +76,7 @@
       background-color: #1e88e5;
     }
     .blue-rounded-button:active {
-      background-color: #1976d2;
+      background-color: #800020;
       transform: translateY(1px);
     }
     h2, h3 {
@@ -62,36 +86,19 @@
       margin: 5px 0;
       color: #666;
     }
-    #new-post-btn {
-  background-color: #2196f3;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  transition: background-color 0.3s ease;
-}
-
-    #new-post-btn:hover {
-  background-color: #2196f3;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-bottom: 20px;
-}
   </style>
 </head>
 <body>
   <div class="container">
-        <button id="new-post-btn" onclick="window.location.href = 'index.html'">返回</button>
+    <div class="header">
+      <h1>资源分享</h1>
+      <a href="index.html">返回</a>
+    </div>
+    <div class="breadcrumb">当前位置：首页 > 资源分享</div>
     <div class="rounded-image">
       <img src="https://himg.bdimg.com/sys/portrait/item/public.1.d18fe7b2.rdM_1NCXwh0m2yUSAA_30g?tt=1705986800833" alt="描述图片的文本">
     </div>
     <h2>来自up主 苦力怕不暴 的分享</h2>
-    <h2>为你找到文件</h2>
     <h3 id="dynamicText">等待加载对应的说明文字...</h3>
     <p>如遇输入密码均为1234或0000</p>
     <div class="button-container">
@@ -163,7 +170,7 @@
         case '010':
           pageToRedirect = 'https://www.123pan.com/s/mWczVv-uauf3';
           break;
-          case '011':
+        case '011':
           pageToRedirect = 'https://www.123865.com/s/mWczVv-oFUf3';
           break;
       }

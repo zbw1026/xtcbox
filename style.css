@@ -22,7 +22,7 @@ body {
 }
 
 h1 {
-  color: #2196f3;
+  color: #dc3023;
   text-align: center;
 }
 
@@ -42,7 +42,7 @@ hr {
 }
 
 button {
-  background-color: #2196f3;
+  background-color: #dc3023;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -59,7 +59,7 @@ button {
 }
 
 .category {
-  background-color: #2196f3;
+  background-color: #dc3023;
   color: white;
   padding: 15px 30px;
   border-radius: 5px;
@@ -69,12 +69,12 @@ button {
 }
 
 .category:hover {
-  background-color: #1976d2;
+  background-color: #800020;
 }
 
 
 #new-post-btn {
-  background-color: #2196f3;
+  background-color: #dc3023;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -111,7 +111,7 @@ button {
   text-align: center;
 }
 #new-post-btn:hover {
-  background-color: #2196f3;
+  background-color: #dc3023;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -128,5 +128,5 @@ input[type="number"] {
   box-sizing: border-box;
 }
 button:hover {
-  background-color: #1976d2;
+  background-color: #800020;
 }
