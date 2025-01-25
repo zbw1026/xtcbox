@@ -14,7 +14,7 @@
   <script>
     function redirect() {
       var numberStr = document.getElementById("numberInput").value;
-      if (numberStr.length === 3 && parseInt(numberStr, 10) < 12) {
+      if (numberStr.length === 3 && parseInt(numberStr, 10) < 15) {
         window.location.href = "detail.html?id=" + numberStr;
       } else {
         alert("请输入正确的三位数字");
