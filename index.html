@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>小天才资源库</title>
+  <title>SWG资源库</title>
   <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
   <link rel="shortcut icon" href="image\logo.png" type="image/x-icon">
   <script>
@@ -89,7 +89,7 @@
       position: relative;
     }
 
-    h1 {
+    h1,p {
       color: var(--primary-color);
       text-align: center;
       margin-bottom: 20px;
@@ -285,7 +285,8 @@
   </style>
 </head>
 <body>
-    <h1>小天才资源库</h1>
+    <h1>SWG资源库</h1>
+    <p>原小天才资源库</p>
     <div class="marquee">
       <marquee behavior="scroll" direction="left">
         本网站由SWG-imoo提供资源支持<a href="QQ group.html">加入我们</a>
@@ -333,8 +334,13 @@
     </div>
     <div id="experienceBox" onclick="copyExperience()"></div>
     <div class="resource">
+      <img src="image\zone.png" alt="暂无图片" class="icon">
+      <h3>[NEW]词典笔专区</h3>
+      <a href="zone\pen.html" class="download-button">前往</a>
+    </div>
+    <div class="resource">
       <img src="image\搜索.png" alt="暂无图片" class="icon">
-      <h3>[NEW]资源搜索</h3>
+      <h3>资源搜索</h3>
       <a href="search.html" class="download-button">前往</a>
     </div>
     <div class="resource">
@@ -374,10 +380,7 @@
       <a class="image-button" href="https://space.bilibili.com/1814635519" target="_blank">
         <img src="image\bili.png" alt="Button Image">
       </a>
-      <a class="image-button" href="https://zbw1026.github.io/coolbox/" target="_blank">
-        <img src="image\网站.png" alt="Button Image">
-      </a>
-      <p>由B站UP苦力怕不暴维护，SWG-imoo提供资源支持&copy;2023-2024</p>
+      <p>由B站UP苦力怕不暴维护，SWG-imoo提供资源支持&copy;2023-2025</p>
       <hr>
       <p>本网页不会收集您的任何信息，请放心使用<a href="update.html">更新日志</a></p>
     </div>
@@ -402,11 +405,10 @@
       var downloadAppDiv = document.createElement("div");
       downloadAppDiv.className = "download-app";
       downloadAppDiv.innerHTML = '<p>我们正在逐步将移动版网页迁移至APP，欢迎使用“小天才资源库”app</p>' +
-                                 '<a href="#" class="download-button">下载App</a>';
+                                 '<a href="zone\app.html" class="download-button">下载App</a>';
       document.body.appendChild(downloadAppDiv);
     }
   };
 </script>
-
 </body>
 </html>
