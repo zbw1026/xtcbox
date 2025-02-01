@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>团队</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .white-box {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        #member-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .member-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .member-item img {
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .member-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .member-name {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .member-qq {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        .member-intro {
+            font-size: 1em;
+            color: #333;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #e9e9e9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <button id="new-post-btn" onclick="window.location.href = '../index.html'">返回</button>
+    <div class="white-box">
+        <h1>我们的团队</h1>
+        <ul id="member-list">
+            <!-- 成员列表项将动态添加到这里 -->
+        </ul>
+        <div class="avatar-container">
+            <img src="http://q.qlogo.cn/headimg_dl?dst_uin=3630882480&spec=640&img_type=jpg" style="width: 50px; height: 50px; margin-right: 10px;border-radius:50%;">
+            <img src="http://q.qlogo.cn/headimg_dl?dst_uin=52060381&spec=640&img_type=jpg" style="width: 50px; height: 50px; margin-right: 10px;border-radius:50%;">
+            <img src="http://q.qlogo.cn/headimg_dl?dst_uin=3053724585&spec=640&img_type=jpg" style="width: 50px; height: 50px; margin-right: 10px;border-radius:50%;">
+            <img src="http://q.qlogo.cn/headimg_dl?dst_uin=1529496364&spec=640&img_type=jpg" style="width: 50px; height: 50px; margin-right: 10px;border-radius:50%;">
+            <img src="..\image\more.png" style="width: 50px; height: 50px; margin-right: 10px;border-radius:50%;">
+        </div>
+        <button id="new-post-btn" onclick="window.location.href = '../qq group.html'">加入我们</button>
+    </div>
+    <br>
+    <div class="white-box">
+        <h1>了解Lv2</h1>
+        <div class="avatar-container">
+            <h3>权益</h3>
+            <p>1.更清净的交流环境<br>2.有机会加入Lv1群管理<br>3.可申请特殊头衔（Lv1群）<br>4.可参加Lv2进阶出题</p>
+        </div>
+        <div class="avatar-container">
+            <h3>加入条件</h3>
+            <p>1.加入Lv1群，并群等级≥6<br>2.参加Lv2进阶测试并获得至少80分<br>注：进阶测试大约每季度1次，每次持续约3-7天</p>
+        </div>
+    </div>
+</div>
+    <script>
+        // 示例：页面加载时添加成员到列表
+        window.onload = function() {
+            const members = [
+                { name: "zbw", qq: "3093711629", intro: "1群，3群群主" },
+                { name: "Aurora明", qq: "3304187791", intro: "2群群主" },
+                { name: "小振", qq: "1379531532", intro: "4群群主" },
+            ];
+
+            const memberList = document.getElementById('member-list');
+            members.forEach(member => {
+                const listItem = document.createElement('li');
+                listItem.className = 'member-item';
+
+                const img = document.createElement('img');
+                img.src = `http://q.qlogo.cn/headimg_dl?dst_uin=${member.qq}&spec=640&img_type=jpg`;
+                img.alt = `${member.name} 的头像`;
+                img.style.width = '50px';
+                img.style.height = '50px';
+                img.style.borderRadius = '50%';
+                img.style.marginRight = '15px';
+
+                const memberInfoDiv = document.createElement('div');
+                memberInfoDiv.className = 'member-info';
+
+                const memberNameSpan = document.createElement('span');
+                memberNameSpan.className = 'member-name';
+                memberNameSpan.textContent = member.name;
+
+                const memberQqSpan = document.createElement('span');
+                memberQqSpan.className = 'member-qq';
+                memberQqSpan.textContent = `QQ: ${member.qq}`;
+
+                const memberIntroSpan = document.createElement('span');
+                memberIntroSpan.className = 'member-intro';
+                memberIntroSpan.textContent = member.intro;
+
+                memberInfoDiv.appendChild(memberNameSpan);
+                memberInfoDiv.appendChild(memberQqSpan);
+                memberInfoDiv.appendChild(memberIntroSpan);
+
+                listItem.appendChild(img);
+                listItem.appendChild(memberInfoDiv);
+
+                memberList.appendChild(listItem);
+            });
+        };
+    </script>
+</body>
+</html>
