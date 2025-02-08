@@ -29,7 +29,7 @@
             margin-bottom: 10px;
         }
         .search-button {
-            background-color: #dc3023;
+            background-color: #2196f3;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -37,7 +37,7 @@
             cursor: pointer;
         }
         .search-button:hover {
-            background-color: #800020;
+            background-color: #0c7cd5;
         }
         .app-result {
             background-color: #f9f9f9;
@@ -55,7 +55,7 @@
             color: #666;
         }
         .jump-button {
-            background-color: #dc3023;
+            background-color: #2196f3;
             color: #fff;
             border: none;
             padding: 5px 10px;
@@ -63,10 +63,10 @@
             cursor: pointer;
         }
         .jump-button:hover {
-            background-color: #800020;
+            background-color: #0c7cd5;
         }
         #new-post-btn {
-            background-color: #dc3023;
+            background-color: #2196f3;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -75,7 +75,7 @@
             margin-bottom: 20px;
         }
         #new-post-btn:hover {
-            background-color: #800020;
+            background-color: #0c7cd5;
         }
     </style>
     <script>
@@ -164,7 +164,7 @@
                     var jumpButton = document.createElement('button');
                     jumpButton.className = 'jump-button';
                     jumpButton.innerText = '跳转';
-                    jumpButton.setAttribute('onclick', 'sendAppNumber("' + appCode + '")');
+                    jumpButton.setAttribute('onclick', 'sendNumber("' + appCode + '")');
                     
                     appDiv.appendChild(appNameElement);
                     appDiv.appendChild(appCodeElement);
@@ -175,7 +175,7 @@
             }
         }
         
-        function sendAppNumber(code) {
+        function sendNumber(code) {
             // 执行相应操作，替换为实际的代码
             // 例如，打开传递应用编码的接收页面
             window.location.href = "detail.html?id=" + code;

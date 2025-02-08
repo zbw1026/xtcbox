@@ -22,7 +22,7 @@ body {
 }
 
 h1 {
-  color: #dc3023;
+  color: #2196f3;
   text-align: center;
 }
 
@@ -42,7 +42,7 @@ hr {
 }
 
 button {
-  background-color: #dc3023;
+  background-color: #2196f3;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -59,7 +59,7 @@ button {
 }
 
 .category {
-  background-color: #dc3023;
+  background-color: #2196f3;
   color: white;
   padding: 15px 30px;
   border-radius: 5px;
@@ -69,12 +69,12 @@ button {
 }
 
 .category:hover {
-  background-color: #800020;
+  background-color: #0c7cd5;
 }
 
 
 #new-post-btn {
-  background-color: #dc3023;
+  background-color: #2196f3;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -84,6 +84,36 @@ button {
   transition: background-color 0.3s ease;
 }
 
+#new-post-btn:hover {
+  background-color: #2196f3;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+}
+
+#back-btn:hover {
+  background-color: #2196f3;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 20px;
+}
+
+#back-btn {
+  background-color: #2196f3;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
 .download-app {
   position: fixed;
   bottom: 20px;
@@ -110,15 +140,7 @@ button {
   width: 100%;
   text-align: center;
 }
-#new-post-btn:hover {
-  background-color: #dc3023;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-bottom: 20px;
-}
+
 input[type="number"] {
   width: 100%;
   padding: 10px;
@@ -128,5 +150,5 @@ input[type="number"] {
   box-sizing: border-box;
 }
 button:hover {
-  background-color: #800020;
+  background-color: #0c7cd5;
 }
