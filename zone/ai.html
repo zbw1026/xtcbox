@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 聊天</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 350px;
+            height: 500px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        #chat-box {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        #chat-box p {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 15px;
+            max-width: 75%;
+            word-wrap: break-word;
+        }
+        #chat-box p.user {
+            background-color: #9AE3E3;
+            text-align: right;
+            margin-left: auto;
+        }
+        #chat-box p.bot {
+            background-color: #E7E7E7;
+            text-align: left;
+            margin-right: auto;
+        }
+        .thinking {
+            color: #888;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .input-area {
+            display: flex;
+            margin-top: 20px;
+        }
+        #user-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: #1aad19;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #128c14;
+        }
+        .clear-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 20px;
+            background-color: #b94a48;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .clear-button:hover {
+            background-color: #953b39;
+        }
+    </style>
+    <script>
+        const greetings = [
+            "你好！有什么可以帮助你的吗？",
+            "很高兴见到你！有什么问题吗？",
+            "欢迎来到这里！需要什么帮助？",
+            "嗨，今天过得怎么样？",
+            "你好，有什么我可以帮你的吗？"
+        ];
+
+        const keywordResponses = {
+            "你好, 欢迎": ["你好！希望你今天过得愉快。", "很高兴见到你！"],
+            "天气": ["今天的天气真不错，不是吗？"],
+            "再见": ["再见！期待再次与你交谈。"],
+            "文件,资源,超级恢复": ["请在群文件、资源网站查找或联系管理员。","请自行百度"],
+            "我不会,怎么,教程": ["「社交巨婴化」预警：过度依赖他人实为自我能力退化，伸手党请先完成「大脑热身运动」再启动求助模式。","别以为我是ai就刁难我","搜索引擎时代还当伸手党？建议自查网络连接状态，别人脑不是云服务器，免费知识付费时代早该进化了。"],
+            "管理员": ["联系方式 QQ：3093711629"],
+            "z6a,z6s,z6pro,d2":["建议扔进垃圾桶","rtos想peach"],
+            "root":["您似乎在查找关于root的知识，您可以访问"],
+            "rtos,peach":["建议扔进垃圾桶","z6a想z6s"],
+            "z6a,z6s,z6pro,d2,peach,rtos":["建议扔进垃圾桶"],
+            // 添加更多关键词和对应的回复
+        };
+
+        function sendMessage() {
+            const userInput = document.getElementById('user-input').value.trim();
+            if (userInput === "") return;
+
+            displayMessage("user", userInput);
+
+            const response = getResponse(userInput);
+            if (response) {
+                typeMessage("bot", response);
+            } else {
+                // 如果没有匹配的关键词，显示一个默认的问候
+                const greeting = getRandomGreeting();
+                typeMessage("bot", greeting);
+            }
+
+            document.getElementById('user-input').value = ""; // 清空发言框内的文本
+        }
+
+        function getResponse(input) {
+            const inputLower = input.toLowerCase();
+            for (const [keywords, responses] of Object.entries(keywordResponses)) {
+                if (keywords.split(',').some(keyword => inputLower.includes(keyword))) {
+                    return responses[Math.floor(Math.random() * responses.length)];
+                }
+            }
+            return null; // 如果没有匹配的关键词，返回null
+        }
+
+        function getRandomGreeting() {
+            return greetings[Math.floor(Math.random() * greetings.length)];
+        }
+
+        function displayMessage(sender, message) {
+            const chatBox = document.getElementById('chat-box');
+            const messageElement = document.createElement('p');
+            messageElement.className = sender; // 可以根据需要调整样式
+            messageElement.textContent = message;
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight; // 自动滚动到底部
+        }
+
+        function typeMessage(sender, message) {
+            const chatBox = document.getElementById('chat-box');
+            const messageElement = document.createElement('p');
+            messageElement.className = sender; // 可以根据需要调整样式
+            chatBox.appendChild(messageElement);
+            chatBox.scrollTop = chatBox.scrollHeight; // 自动滚动到底部
+
+            let i = 0;
+            const interval = setInterval(() => {
+                if (i < message.length) {
+                    messageElement.textContent += message.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 50); // 每50毫秒显示一个字符
+        }
+
+        function clearChat() {
+            const chatBox = document.getElementById('chat-box');
+            chatBox.innerHTML = ''; // 清空聊天记录
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>AI 聊天</h1>
+        <div id="chat-box" class="white-box"></div>
+        <div class="input-area">
+            <input type="text" id="user-input" placeholder="输入你的消息...">
+            <button onclick="sendMessage()">发送</button>
+            <button class="clear-button" onclick="clearChat()">清空</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>文档中心</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f3f3f3;
+          margin: 0;
+          padding: 20px;
+        }
+    
+        .app-container {
+          max-width: 90%;
+          margin-bottom: 20px;
+          padding: 20px;
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          display: flex;
+          align-items: center;
+        }
+    
+        .app-icon {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+    
+        .app-info {
+          flex-grow: 1;
+        }
+    
+        h2 {
+          color: #2196f3;
+          margin: 0 0 10px;
+        }
+    
+        .btn {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #2196f3;
+          color: #fff;
+          text-decoration: none;
+          border-radius: 4px;
+          transition: background-color 0.3s ease;
+        }
+    
+        .btn:hover {
+          background-color: #0c7cd5;
+        }
+        
+        #circle {
+          position: fixed;
+          top: 5%;
+          left: 0;
+          transform: translate(50%, -50%);
+          width: 50px;
+          height: 50px;
+          background-color: #2196f3;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+        }
+        
+        #circle img {
+          max-width: 90%;
+          max-height: 30%;
+        }
+      </style>
+</head>
+<body>
+    <header>
+        <button id="new-post-btn" onclick="window.location.href = '../index.html'">返回</button> 
+        <h1>文档中心</h1>
+    </header>
+
+    <main class="container">
+        <section class="white-box">
+            <div id="List"></div>
+  <script>
+    var appData = [
+      { name: "腕上公交", icon: "https://static.codemao.cn/coco/player/unstable/Sk1N-1uO2.image/png?hash=FsuL_jTTCWBBRKwmw2ZO8ay6nEby", Number: "www.baidu.com" },
+    ];
+
+    window.addEventListener("DOMContentLoaded", function () {
+      var appListContainer = document.getElementById("List");
+
+      for (var i = 0; i < appData.length; i++) {
+        var app = appData[i];
+
+        var appBox = document.createElement("div");
+        appBox.className = "app-container";
+
+        var appIcon = document.createElement("img");
+        appIcon.className = "app-icon";
+        appIcon.src = app.icon;
+        appBox.appendChild(appIcon);
+
+        var appInfo = document.createElement("div");
+        appInfo.className = "app-info";
+
+        var appName = document.createElement("h2");
+        appName.textContent = app.name;
+        appInfo.appendChild(appName);
+
+        appBox.appendChild(appInfo);
+
+        var appButton = document.createElement("a");
+        appButton.href = app.Number;
+        appButton.className = "btn";
+        appButton.textContent = "跳转";
+        appBox.appendChild(appButton);
+
+        appListContainer.appendChild(appBox);
+      }
+    });
+  </script>
+        </section>
+    </main>
+
+    <footer class="download-app">
+        <p>下载我们的应用程序以获取更多教程。</p>
+        <button class="download-button">下载应用</button>
+    </footer>
+</body>
+</html>
